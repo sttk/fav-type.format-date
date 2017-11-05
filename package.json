@@ -51,6 +51,7 @@
   "dependencies": {
     "@fav/text.pad-left": "^0.1.0",
     "@fav/type.is-function": "^0.7.0",
-    "@fav/type.is-string": "^0.7.0"
+    "@fav/type.is-string": "^0.7.0",
+    "@fav/type.is-valid-date": "^0.9.0"
   }
 }
