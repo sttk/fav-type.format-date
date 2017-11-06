@@ -1,6 +1,6 @@
 {
   "name": "@fav/type.format-date",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create a date formatter with given format.",
   "main": "index.js",
   "files": [
