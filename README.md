@@ -24,8 +24,8 @@ For Node.js:
 
 ```js
 var formatDate = require('@fav/type.format-date');
-var formatYYMM = formatDate('YY/MM');
-formatYYMM(new Date(2017, 10, 5)); // => '10/05'
+var formatMMDD = formatDate('MM/DD');
+formatMMDD(new Date(2017, 10, 5)); // => '11/05'
 ```
 
 For Web browsers:
@@ -34,8 +34,8 @@ For Web browsers:
 <script src="fav.type.format-date.min.js"></script>
 <script>
 var formatDate = fav.type.formatDate;
-var formatYYMM = formatDate('YY/MM');
-formatYYMM(new Date(2017, 10, 5)); // => '10/05'
+var formatMMDD = formatDate('MM/DD');
+formatMMDD(new Date(2017, 10, 5)); // => '11/05'
 </script>
 ```
 
