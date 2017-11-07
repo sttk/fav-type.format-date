@@ -56,24 +56,59 @@ Creates a date format function which convert a date to a string in the specified
 
 | Character | Description                | Example                 |
 |-----------|----------------------------|-------------------------|
-| 'Y'*      | Full year.                 | 'YYYY' => '2017'        |
-| 'y'*      | Year of century (0〜±99). | 'yy' => '17'            |
-| 'M'*      | Month (1〜12)              | 'MM' => '11'            |
-| 'Mmm'     | Month abbreviation         | 'Mmm' => 'Nov'          |
-| 'Month'   | Month full name            | 'Month' => 'November'   |
-| 'D'*      | Day of month (1〜31)       | 'DD' => '05'            |
-| 'H'*      | Hours (0〜23)              | 'HH' => '14'            |
-| 'm'*      | Minutes (0〜59)            | 'mm' => '45'            |
-| 's'*      | Seconds (0〜59)            | 'ss' => '06'            |
-| 'S'*      | Hours (0〜59)              | 'SSS' => '023'          |
-| 'Www'     | Week abbreviation          | 'Www' => 'Sun'          |
-| 'Week'    | Week full name             | 'Week' => 'Sunday'      |
+| `'Y'*`    | Full year.                 | `'YYYY' => '2017'`      |
+| `'y'*`    | Year of century (0〜±99). | `'yy' => '17'`          |
+| `'M'*`    | Month (1〜12)              | `'MM' => '11'`          |
+| `'Mmm'`   | Month abbreviation         | `'Mmm' => 'Nov'`        |
+| `'Month'` | Month full name            | `'Month' => 'November'`   |
+| `'D'*`    | Day of month (1〜31)       | `'DD' => '05'`            |
+| `'H'*`    | Hours (0〜23)              | `'HH' => '14'`            |
+| `'m'*`    | Minutes (0〜59)            | `'mm' => '45'`            |
+| `'s'*`    | Seconds (0〜59)            | `'ss' => '06'`            |
+| `'S'*`    | Hours (0〜59)              | `'SSS' => '023'`          |
+| `'Www'`   | Week abbreviation          | `'Www' => 'Sun'`          |
+| `'Week'`  | Week full name             | `'Week' => 'Sunday'`      |
 
 #### Returns:
 
 A formatted string which represents the specified date.
 
 **Type:** string
+
+
+## Checked                                                                      
+
+### Node.js (4〜8)
+
+| Platform  |   4    |   5    |   6    |   7    |   8    |
+|:---------:|:------:|:------:|:------:|:------:|:------:|
+| macOS     |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+| Windows10 |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+| Linux     |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+
+### io.js (1〜3)
+
+| Platform  |   1    |   2    |   3    |
+|:---------:|:------:|:------:|:------:|
+| macOS     |&#x25ef;|&#x25ef;|&#x25ef;|
+| Windows10 |&#x25ef;|&#x25ef;|&#x25ef;|
+| Linux     |&#x25ef;|&#x25ef;|&#x25ef;|
+
+### Node.js (〜0.12)
+
+| Platform  |  0.7   |  0.8   |  0.9   |  0.10  |  0.11  |  0.12  |
+|:---------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| macOS     |        |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+| Windows10 |        |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+| Linux     |&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|&#x25ef;|
+
+### Web browsers
+
+| Platform  | Chrome | Firefox | Vivaldi | Safari |  Edge  | IE11   |
+|:---------:|:------:|:-------:|:-------:|:------:|:------:|:------:|
+| macOS     |&#x25ef;|&#x25ef; |&#x25ef; |&#x25ef;|   --   |   --   |
+| Windows10 |&#x25ef;|&#x25ef; |&#x25ef; |   --   |&#x25ef;|&#x25ef;|
+| Linux     |&#x25ef;|&#x25ef; |&#x25ef; |   --   |   --   |   --   |
 
 
 ## License
