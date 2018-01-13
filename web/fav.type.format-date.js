@@ -88,7 +88,7 @@ function formatDate(format) {
       }
     }
   }
-  
+
   return function(date) {
     if (!isValidDate(date)) {
       return '';
@@ -113,7 +113,7 @@ function noop() {
 
 module.exports = formatDate;
 
-},{"./lib/day-formatter":2,"./lib/hour-formatter":3,"./lib/millisecond-formatter":4,"./lib/minute-formatter":5,"./lib/month-formatter":6,"./lib/second-formatter":7,"./lib/week-formatter":8,"./lib/year-formatter":9,"@fav/type.is-function":12,"@fav/type.is-string":13,"@fav/type.is-valid-date":14}],2:[function(require,module,exports){
+},{"./lib/day-formatter":2,"./lib/hour-formatter":3,"./lib/millisecond-formatter":4,"./lib/minute-formatter":5,"./lib/month-formatter":6,"./lib/second-formatter":7,"./lib/week-formatter":8,"./lib/year-formatter":9,"@fav/type.is-function":13,"@fav/type.is-string":14,"@fav/type.is-valid-date":15}],2:[function(require,module,exports){
 'use strict';
 
 var padLeft = require('@fav/text.pad-left');
@@ -307,6 +307,22 @@ module.exports = yearFormatter;
 },{"@fav/text.pad-left":10}],10:[function(require,module,exports){
 'use strict';
 
+var padLeft;
+
+/* istanbul ignore if */
+if (!Boolean(String.prototype.padStart)) {
+  padLeft = require('./lib/pad-left');
+} else {
+  padLeft = function(source, length, padding) {
+    return source.padStart(length, padding || ' ');
+  };
+}
+
+module.exports = padLeft;
+
+},{"./lib/pad-left":11}],11:[function(require,module,exports){
+'use strict';
+
 var repeat = require('@fav/text.repeat');
 
 function padLeft(source, length, padding) {
@@ -327,7 +343,7 @@ function padLeft(source, length, padding) {
 
 module.exports = padLeft;
 
-},{"@fav/text.repeat":11}],11:[function(require,module,exports){
+},{"@fav/text.repeat":12}],12:[function(require,module,exports){
 'use strict';
 
 function repeat(source, ntimes) {
@@ -338,7 +354,8 @@ function repeat(source, ntimes) {
   var unitlen = source.length;
   var halftime = Math.ceil(ntimes / 2);
 
-  for (var i = 1; i < halftime; i += i) {
+  var i;
+  for (i = 1; i < halftime; i += i) {
     source += source;
   }
 
@@ -347,7 +364,7 @@ function repeat(source, ntimes) {
 
 module.exports = repeat;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 function isFunction(value) {
@@ -365,7 +382,7 @@ Object.defineProperty(isFunction, 'not', {
 
 module.exports = isFunction;
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 function isString(value) {
@@ -389,7 +406,7 @@ Object.defineProperty(isString, 'not', {
 
 module.exports = isString;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 function isValidDate(value) {
@@ -400,6 +417,15 @@ function isValidDate(value) {
   var time = value.getTime();
   return time === time;
 }
+
+function isNotValidDate(value) {
+  return !isValidDate(value);
+}
+
+Object.defineProperty(isValidDate, 'not', {
+  enumerable: true,
+  value: isNotValidDate,
+});
 
 module.exports = isValidDate;
 
