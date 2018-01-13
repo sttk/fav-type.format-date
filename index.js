@@ -87,7 +87,7 @@ function formatDate(format) {
       }
     }
   }
-  
+
   return function(date) {
     if (!isValidDate(date)) {
       return '';
