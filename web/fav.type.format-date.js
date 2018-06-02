@@ -14,7 +14,7 @@ var secondFormatter = require('./lib/second-formatter');
 var millisecondFormatter = require('./lib/millisecond-formatter');
 var weekFormatter = require('./lib/week-formatter');
 
-function formatDate(format) {
+function formatDate(format, opts) {
   if (!isString(format)) {
     return noop;
   }
@@ -23,61 +23,62 @@ function formatDate(format) {
   var arr = format.split(/(Y+|y+|Mmm|Month|M+|D+|H+|m+|s+|S+|Www|Week)/);
   for (var i = 0; i < arr.length; i++) {
     var elm = arr[i];
+    var customFmt = createFormatter((opts || {})[elm]);
 
     switch (elm[0]) {
       case 'Y': {
-        fmts.push(yearFormatter(elm));
+        fmts.push(customFmt || yearFormatter(elm));
         break;
       }
       case 'y': {
-        fmts.push(yearFormatter.yearsOfCentury(elm));
+        fmts.push(customFmt || yearFormatter.yearsOfCentury(elm));
         break;
       }
       case 'M': {
         switch (elm) {
           case 'Month': {
-            fmts.push(monthFormatter.fullname);
+            fmts.push(customFmt || monthFormatter.fullname);
             break;
           }
           case 'Mmm': {
-            fmts.push(monthFormatter.abbreviation);
+            fmts.push(customFmt || monthFormatter.abbreviation);
             break;
           }
           default: {
-            fmts.push(monthFormatter(elm));
+            fmts.push(customFmt || monthFormatter(elm));
             break;
           }
         }
         break;
       }
       case 'D': {
-        fmts.push(dayFormatter(elm));
+        fmts.push(customFmt || dayFormatter(elm));
         break;
       }
       case 'H': {
-        fmts.push(hourFormatter(elm));
+        fmts.push(customFmt || hourFormatter(elm));
         break;
       }
       case 'm': {
-        fmts.push(minuteFormatter(elm));
+        fmts.push(customFmt || minuteFormatter(elm));
         break;
       }
       case 's': {
-        fmts.push(secondFormatter(elm));
+        fmts.push(customFmt || secondFormatter(elm));
         break;
       }
       case 'S': {
-        fmts.push(millisecondFormatter(elm));
+        fmts.push(customFmt || millisecondFormatter(elm));
         break;
       }
       case 'W': {
         switch (elm) {
           case 'Week': {
-            fmts.push(weekFormatter.fullname);
+            fmts.push(customFmt || weekFormatter.fullname);
             break;
           }
           default: {
-            fmts.push(weekFormatter.abbreviation);
+            fmts.push(customFmt || weekFormatter.abbreviation);
             break;
           }
         }
@@ -110,6 +111,14 @@ function formatDate(format) {
 function noop() {
   return '';
 };
+
+function createFormatter(fn) {
+  if (isFunction(fn)) {
+    return function(date) {
+      return fn(date);
+    };
+  }
+}
 
 module.exports = formatDate;
 

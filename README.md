@@ -26,6 +26,13 @@ For Node.js:
 var formatDate = require('@fav/type.format-date');
 var formatMMDD = formatDate('MM/DD');
 formatMMDD(new Date(2017, 10, 5)); // => '11/05'
+
+var formatCustom = formatDate('YYYY/MM/DD (Week)', {
+  Week: function(date) {
+    return ['日', '月', '火', '水', '木', '金', '土'][date.getDay()]
+  },
+});
+formatCustom(new Date(2018, 4, 30)); // => '2018/05/30 (水)'
 ```
 
 For Web browsers:
@@ -42,9 +49,11 @@ formatMMDD(new Date(2017, 10, 5)); // => '11/05'
 
 ## API
 
-### <u>formatDate(format) : function</u>
+### <u>formatDate(format [, opts]) : function</u>
 
 Creates a date format function which convert a date to a string in the specified format.
+
+
 
 #### Parameters:
 
