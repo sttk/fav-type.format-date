@@ -15,7 +15,7 @@ To install from npm:
 $ npm install --save @fav/type.format-date
 ```
 
-***NOTE:*** *npm < 2.7.0 does not support scoped package, but even old version Node.js supports it. So when you use such older npm, you should download this package from [github.com][repo-url], and move it in `node_modules/@fav/type.format-date/` directory manually.*
+***NOTE:*** *npm < 2.7.0 does not support scoped package, but old version Node.js supports it. So when you use such older npm, you should download this package from [github.com][repo-url], and move it in `node_modules/@fav/type.format-date/` directory manually.*
 
 
 ## Usage
@@ -53,13 +53,14 @@ formatMMDD(new Date(2017, 10, 5)); // => '11/05'
 
 Creates a date format function which convert a date to a string in the specified format.
 
-
+Conversion of each element field in *format* can be customized with the parameter *opts*, which is a plain object of which keys are field characters and of which values are converting functions.
 
 #### Parameters:
 
 | Parameter |  Type  | Description                            |
 |-----------|:------:|----------------------------------------|
-| format    | string | A date format string, which consists of the following date element fields. |
+| *format*  | string | A date format string, which consists of the following date element fields. |
+| *opts*    | object | A plain object having pairs of a field character and a converting function. |
 
 ##### Date element fields:
 
